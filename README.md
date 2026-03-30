@@ -123,6 +123,21 @@ for (let i = 0; i < arr.length; i++)
 
 ---
 
+## Pro Tips From the Community
+
+**Scope rules to your actual failure modes, not generic ones.**
+Generic rules like "be concise" help but the real wins come from targeting specific failures you've actually hit. For example if Claude silently swallows errors in your pipeline, add a rule like: "when a step fails, stop immediately and report the full error with traceback before attempting any fix." Specific beats generic every time.
+
+**CLAUDE.md files compose - use that.**
+Claude reads multiple CLAUDE.md files at once - global (~/.claude/CLAUDE.md), project-level, and subdirectory-level. This means:
+- Keep general preferences (tone, format, ASCII rules) in your global file
+- Keep project-specific constraints ("never modify /config without confirmation") at the project level
+- Keep task-specific rules in subdirectory files
+
+This avoids bloating any single file and keeps rules close to where they apply.
+
+---
+
 ## Profiles
 
 Different project types need different levels of compression.
